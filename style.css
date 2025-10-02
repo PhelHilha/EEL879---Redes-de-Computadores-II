@@ -1,0 +1,163 @@
+/* RESET E CONFIGURAÇÕES GLOBAIS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #2c2c2c;
+    color: #f4f4f4;
+    line-height: 1.6;
+    padding-top: 80px; /* IMPORTANTE: Adiciona espaço no topo para o menu fixo */
+}
+
+/* CABEÇALHO E NAVEGAÇÃO (igual em todas as páginas) */
+header {
+    background-color: #1e1e1e;
+    padding: 1rem 5%;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+}
+
+nav ul li {
+    margin-left: 20px;
+}
+
+nav ul li a {
+    color: #f4f4f4;
+    text-decoration: none;
+    font-weight: 300;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #00aaff;
+}
+
+/* ESTILO DA PÁGINA INICIAL (HERO) - Usado apenas no index.html */
+.hero {
+    height: calc(100vh - 80px); /* Ajusta a altura para descontar o padding do body */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: #333;
+}
+
+.hero-content h1 {
+    font-size: 4rem;
+    margin-bottom: 0.5rem;
+}
+.hero-content h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    font-weight: 300;
+}
+.hero-content p {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 24px;
+    border: 1px solid #f4f4f4;
+    border-radius: 5px;
+    color: #f4f4f4;
+    text-decoration: none;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+/* ESTILO DAS PÁGINAS DE CONTEÚDO */
+.content-section {
+    padding: 40px 10%;
+}
+
+.content-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    color: #00aaff;
+}
+
+.content-section p {
+    font-size: 1.1rem;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: justify;
+}
+
+/* ESTILOS PARA A SEÇÃO DE QUESTÕES (FAQ) */
+.faq-question {
+    background-color: #3a3a3a;
+    color: white;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 1.1rem;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    transition: background-color 0.3s ease;
+    border-bottom: 1px solid #444;
+}
+
+.faq-question:hover, .faq-question.active {
+    background-color: #444;
+}
+
+.faq-question::before {
+    content: '+';
+    font-size: 1.2rem;
+    color: #00aaff;
+    font-weight: 600;
+    float: left;
+    margin-right: 15px;
+}
+
+.faq-question.active::before {
+    content: "-";
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+    background-color: #2c2c2c;
+}
+
+.faq-answer p {
+    padding: 20px;
+    border-bottom: 1px solid #444;
+}
