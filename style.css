@@ -10,7 +10,7 @@ body {
     background-color: #2c2c2c;
     color: #f4f4f4;
     line-height: 1.6;
-    padding-top: 80px; /* IMPORTANTE: Adiciona espaço no topo para o menu fixo */
+    padding-top: 80px;
 }
 
 /* CABEÇALHO E NAVEGAÇÃO (igual em todas as páginas) */
@@ -58,9 +58,9 @@ nav ul li a:hover {
     color: #00aaff;
 }
 
-/* ESTILO DA PÁGINA INICIAL (HERO) - Usado apenas no index.html */
+/* ESTILO DA PÁGINA INICIAL (HERO) */
 .hero {
-    height: calc(100vh - 80px); /* Ajusta a altura para descontar o padding do body */
+    height: calc(100vh - 80px);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -104,16 +104,73 @@ nav ul li a:hover {
 
 .content-section h2 {
     font-size: 2.5rem;
-    margin-bottom: 1.5rem;
+    margin-bottom: 2.5rem;
     text-align: center;
     color: #00aaff;
 }
 
 .content-section p {
     font-size: 1.1rem;
-    max-width: 800px;
-    margin: 0 auto;
+    max-width: 1100px; /* ALTERADO de 800px para 1100px */
+    margin: 0 auto 1rem auto;
     text-align: justify;
+}
+
+/* Estilo para Subtítulos dentro do conteúdo */
+.content-section h3, .content-section h4 {
+    font-size: 1.5rem;
+    color: #e0e0e0;
+    max-width: 1100px; /* ALTERADO de 800px para 1100px */
+    margin: 2rem auto 1rem auto;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #555;
+}
+
+.content-section h4 {
+    font-size: 1.2rem;
+    border: none;
+    margin-top: 1.5rem;
+}
+
+/* Estilo CORRIGIDO para listas (ordenadas e não ordenadas) */
+.content-section ul, .content-section ol {
+    max-width: 1100px; /* ALTERADO de 800px para 1100px */
+    margin: 0 auto 1rem auto;
+    padding-left: 40px;
+}
+
+.content-section li {
+    margin-bottom: 0.75rem;
+    text-align: justify;
+}
+
+/* ESTILO PARA LAYOUT DE TEXTO AO LADO DE IMAGEM */
+.text-image-container {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    max-width: 1100px; /* ALTERADO de 800px para 1100px */
+    margin: 2rem auto;
+}
+
+.text-block {
+    flex: 1.5; /* ALTERADO de 2 para 1.5 (dá mais espaço para a imagem) */
+}
+
+.image-block {
+    flex: 1;
+}
+
+.image-block img {
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+@media (max-width: 768px) {
+    .text-image-container {
+        flex-direction: column;
+    }
 }
 
 /* ESTILOS PARA A SEÇÃO DE QUESTÕES (FAQ) */
@@ -160,4 +217,17 @@ nav ul li a:hover {
 .faq-answer p {
     padding: 20px;
     border-bottom: 1px solid #444;
+}
+
+/* --- MODIFICADOR PARA ALTERNAR A POSIÇÃO DA IMAGEM --- */
+
+.text-image-container.image-left {
+    flex-direction: row-reverse; /* Inverte a ordem (imagem vem primeiro) */
+}
+
+/* Garante que em telas pequenas a inversão seja desfeita e tudo fique em coluna */
+@media (max-width: 768px) {
+    .text-image-container.image-left {
+        flex-direction: column;
+    }
 }
