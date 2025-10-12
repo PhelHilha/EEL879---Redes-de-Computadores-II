@@ -26,9 +26,62 @@
     </header>
     <main>
         <div class="content-section">
-            <h2>1. Introdução ao LoRaWAN</h2>
-            <p>Esta seção apresenta nossa proposta de índice para o trabalho sobre LoraWAN,
-abordando tópicos que julgamos necessários para exclarecer desde definição, arquitetura até usos. (Sub-tópicos podem mudar ao decorrer do desenvolvimento.).</p>
+            <h2>1. Introdução Aprofundada ao Protocolo de Rede LoRaWAN™</h2>
+
+            <div class="text-image-container">
+                <div class="text-block">
+                    <p>O LoRaWAN™ (Long Range Wide Area Network) é um protocolo de rede crucial para o ecossistema de Internet das Coisas (IoT), especificamente desenvolvido e otimizado para dispositivos finais alimentados por bateria (battery-powered end-devices). Estes dispositivos podem ser tanto móveis quanto montados em locais fixos. A arquitetura da rede é tipicamente implementada em uma topologia estrela-de-estrelas (star-of-stars).</p>
+                    <p>Nessa configuração, os gateways atuam como retransmissores, estabelecendo a comunicação entre os dispositivos finais e um Network Server (Servidor de Rede) central.</p>
+                </div>
+                <div class="image-block">
+                    <img src="images/lorawan-logo.jpg" alt="Logo oficial do LoRaWAN">
+                </div>
+            </div>
+
+            <p>Para garantir a confidencialidade e integridade das transmissões via rádio, o protocolo LoRaWAN incorpora criptografia simétrica. As chaves de sessão utilizadas para este fim são derivadas das chaves raiz do dispositivo (NwkKey e AppKey). O gerenciamento e o armazenamento dessas chaves raiz, bem como as operações de derivação de chaves associadas, são realizados por um componente de backend denominado Join Server (Servidor de Adesão). É importante notar que, embora a comunicação seja geralmente bidirecional, o tráfego predominante esperado é o uplink, ou seja, a comunicação do dispositivo final para o Network Server.</p>
+
+            <h3>1.1 O que é LoRaWAN?</h3>
+            <p>É fundamental distinguir entre a tecnologia de modulação de rádio subjacente e o protocolo de rede que a utiliza:</p>
+            <ul>
+                <li><strong>LoRa™ (Long Range):</strong> Esta é a modulação sem fio desenvolvida pela Semtech, projetada especificamente para aplicações que demandam longo alcance, baixa potência e baixa taxa de dados. As taxas de dados do LoRa variam amplamente, tipicamente entre 0,3 kbps e 50 kbps.</li>
+                <li><strong>LoRaWAN™:</strong> Este é o protocolo de rede que define a arquitetura de comunicação e a camada MAC (Medium Access Control). O protocolo estabelece o fluxo de dados, a segurança e a comunicação entre os vários componentes da rede.</li>
+            </ul>
+            
+            <div class="text-image-container">
+                <div class="text-block">
+                    <h4>Classes de Dispositivos:</h4>
+                    <p>O protocolo LoRaWAN é estruturado em classes que definem a disponibilidade e o consumo de energia dos dispositivos finais:</p>
+                    <ol>
+                        <li><strong>Classe A:</strong> A classe base, de menor consumo. Cada transmissão uplink é seguida por duas curtas janelas de recepção (downlink).</li>
+                        <li><strong>Classe B:</strong> Abre janelas de recepção extras em horários programados, sincronizados por um Beacon.</li>
+                        <li><strong>Classe C:</strong> Mantém a janela de recepção quase sempre aberta, oferecendo a menor latência ao custo de maior consumo de energia.</li>
+                    </ol>
+                </div>
+                <div class="image-block">
+                    <img src="images/lorawan-classes.png" alt="Diagrama das camadas LoRaWAN, mostrando as Classes A, B e C na camada MAC">
+                </div>
+            </div>
+
+            <h3>1.2 O Desafio da Conectividade IoT</h3>
+            <p>O desenvolvimento de redes LPWAN foi motivado pela necessidade de conectar vastas quantidades de dispositivos de IoT que exigiam conectividade de longo alcance e longos anos de vida útil da bateria. O protocolo LoRaWAN é otimizado para maximizar tanto a vida útil da bateria quanto a capacidade da rede através de mecanismos como a Taxa de Dados Adaptativa (ADR).</p>
+
+            <div class="text-image-container">
+                 <div class="text-block">
+                    <h3>1.3 Arquitetura da Rede</h3>
+                    <p>A arquitetura LoRaWAN utiliza a topologia estrela-de-estrelas. Os principais componentes são:</p>
+                    <ul>
+                        <li><strong>End-Devices (Dispositivos Finais):</strong> Sensores e atuadores na borda da rede.</li>
+                        <li><strong>Gateways:</strong> Retransmissores transparentes de mensagens.</li>
+                        <li><strong>Network Server (NS):</strong> O "cérebro" da rede.</li>
+                        <li><strong>Application Server (AS):</strong> Destino final dos dados de aplicação.</li>
+                        <li><strong>Join Server (JS):</strong> Armazena as chaves de segurança.</li>
+                    </ul>
+                </div>
+                <div class="image-block">
+                     <img src="images/lorawan-arquitetura.jpg" alt="Diagrama da arquitetura de rede LoRaWAN com sensores, gateway, nuvem e aplicações.">
+                </div>
+            </div>
+            
         </div>
     </main>
 </body>
