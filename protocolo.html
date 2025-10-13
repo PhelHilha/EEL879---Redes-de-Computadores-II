@@ -28,7 +28,44 @@
         <div class="content-section">
             <h2>3. O Protocolo LoRaWAN: Regras da Rede</h2>
             <p>Detalhamento da camada MAC (Media Access Control), ou seja, as regras e funcionalidades que definem o protocolo LoRaWAN.</p>
+
+            <p>Enquanto LoRa define como o sinal viaja, o LoRaWAN é o protocolo que se situa acima, definindo a arquitetura, as políticas e a estrutura da rede.</p>
+
+            <h4>Função e Camada MAC</h4>
+            [cite_start]<p>O LoRaWAN define a camada MAC (Medium Access Control)[cite: 17], cuja funcionalidade é gerenciada centralmente pelo Servidor de Rede para otimizar o uso do meio e evitar congestionamentos.</p>
+
+            <h4>Componentes da Arquitetura</h4>
+            [cite_start]<p>A rede em topologia estrela-de-estrelas é composta por[cite: 36]:</p>
+            <ul>
+                [cite_start]<li><strong>Dispositivos Finais (<em>End-Devices</em>):</strong> Sensores e atuadores localizados na borda da rede[cite: 37].</li>
+                [cite_start]<li><strong>Gateways:</strong> Atuam como retransmissores, encaminhando mensagens de forma transparente entre os dispositivos e o servidor de rede via IP[cite: 38].</li>
+                [cite_start]<li><strong>Servidor de Rede (<em>Network Server</em> - NS):</strong> Considerado o "cérebro da rede"[cite: 39], gerencia funcionalidades MAC, autenticação, endereçamento de dispositivos e a implementação do ADR.</li>
+                [cite_start]<li><strong>Servidor de Aplicação (<em>Application Server</em> - AS):</strong> É o destino final dos dados, responsável por processar e interpretar as informações dos sensores[cite: 41].</li>
+                [cite_start]<li><strong>Servidor de Adesão (<em>Join Server</em> - JS):</strong> Gerencia o processo de ativação OTAA, armazenando as chaves de segurança raiz (NwkKey e AppKey) e derivando as chaves de sessão[cite: 11, 42].</li>
+            </ul>
+
+            <h4>Mecanismo de Acesso (MAC)</h4>
+            <p>O protocolo adota o acesso aleatório do tipo <em>pure Aloha</em>. Essa escolha simplifica o design dos dispositivos finais e maximiza a economia de energia, pois não há necessidade de coordenação prévia para transmissões. A desvantagem é um potencial aumento de colisões em redes muito densas.</p>
+
+            <h4>Classes de Dispositivos</h4>
+            [cite_start]<p>O protocolo LoRaWAN estrutura os dispositivos em classes para balancear o consumo de energia e a latência de comunicação[cite: 20]:</p>
+            <ul>
+                <li><strong>Classe A (Obrigatória):</strong> É a classe com o menor consumo. Após cada transmissão de uplink, o dispositivo abre duas curtas janelas de recepção para downlink. [cite_start]Passa a maior parte do tempo em modo de hibernação[cite: 29].</li>
+                [cite_start]<li><strong>Classe B:</strong> Além das janelas da Classe A, abre janelas de recepção extras em horários agendados (<em>ping slots</em>), sincronizados por um sinalizador (<em>Beacon</em>) enviado pelo gateway[cite: 30].</li>
+                <li><strong>Classe C:</strong> Oferece a menor latência ao manter a janela de recepção (Rx2) quase sempre aberta, exceto durante as transmissões. [cite_start]Consequentemente, é a classe com o maior consumo de energia[cite: 31].</li>
+            </ul>
+
+            <h4>Segurança e Ativação</h4>
+            [cite_start]<p>A segurança é um pilar do protocolo, que utiliza criptografia simétrica AES 128 para proteger tanto a rede quanto os dados da aplicação[cite: 9]. A ativação dos dispositivos pode ser feita de duas formas:</p>
+            <ul>
+                <li><strong>OTAA (Over-the-Air Activation):</strong> Método preferencial e mais seguro. O dispositivo se junta à rede dinamicamente, e as chaves de sessão são negociadas e derivadas das chaves raiz armazenadas no Join Server.</li>
+                <li><strong>ABP (Activation by Personalization):</strong> As chaves de sessão e o endereço são pré-configurados no dispositivo. É um método mais simples, mas menos seguro que o OTAA.</li>
+            </ul>
+
+            <h4>Taxa de Dados Adaptativa (ADR)</h4>
+            <p>Este é um mecanismo crucial pelo qual o protocolo é otimizado para maximizar tanto a vida útil da bateria quanto a capacidade da rede. O Servidor de Rede ajusta dinamicamente o SF e a potência de transmissão (TP) de cada dispositivo. [cite_start]Dispositivos mais próximos do gateway são instruídos a usar um SF menor (taxa de dados mais alta) e menor potência, minimizando o tempo no ar e o consumo de energia[cite: 34].</p>
         </div>
     </main>
 </body>
+
 </html>
