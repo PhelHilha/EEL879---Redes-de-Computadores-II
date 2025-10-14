@@ -26,8 +26,37 @@
     </header>
     <main>
         <div class="content-section">
-            <h2>4. Desempenho e Escalabilidade</h2>
-            <p>Uma análise crítica sobre a capacidade do LoRaWAN de suportar redes massivas, com base nos artigos seminais que investigam os limites da tecnologia.</p>
+            <h2>Desempenho e Escalabilidade</h2>
+            <p>As redes LoRaWAN são otimizadas para longo alcance e baixo consumo de energia, mas vêm com limitações de desempenho e gargalos importantes, principalmente relacionados à sua taxa de dados e regulamentações de uso do espectro.</p>
+        
+            <h3>Métricas de Desempenho</h3>
+
+            <h4>Baixa Taxa de Dados (Data Rate - DR)</h4>
+            <p>O LoRaWAN opera com baixa taxa de dados, variando tipicamente de 0,3 kbps a 250 kbps (dependendo do Spreading Factor - SF e da largura de banda), o que é inerente à tecnologia LoRa (camada física).</p>
+            <p>Essa característica permite o longo alcance e a alta imunidade a ruído, pois espalha o sinal por uma largura de banda maior. No entanto, o tamanho do payload (carga útil da mensagem) é drasticamente limitado (geralmente algumas dezenas de bytes) e o tempo de transmissão (Time on Air - ToA) é longo. Isso torna o LoRaWAN inadequado para aplicações que exigem alta vazão ou transmissão de grandes volumes de dados, como streaming de vídeo ou grandes atualizações de firmware.</p>
+            
+            <h4>Otimização por Adaptive Data Rate (ADR)</h4>
+            <p>O ADR (Taxa de Dados Adaptativa) é um recurso essencial do protocolo LoRaWAN que tenta otimizar o desempenho ajustando dinamicamente o Data Rate (e o Spreading Factor) de um dispositivo.</p>
+            <p>O Network Server (NS) avalia a qualidade do link (SNR, RSSI) do dispositivo e pode instruí-lo a:</p>
+            <ul>
+                <li><p><strong>Aumentar o DR (diminuir o SF):</strong> Para dispositivos próximos ao gateway com excelente sinal, isso reduz o Time on Air, o que, por sua vez, aumenta a vida útil da bateria e libera tempo no canal de rádio, melhorando a capacidade da rede como um todo.</p></li>
+                <li><p><strong>Diminuir o DR (aumentar o SF):</strong> Para dispositivos distantes ou com sinal fraco, isso aumenta o alcance e a robustez à custa de um ToA mais longo.</p></li>
+            </ul>
+
+            <h3>Gargalos</h3>
+
+            <p>Os principais gargalos de desempenho e escalabilidade do LoRaWAN resultam das restrições regulatórias no uso de bandas não licenciadas e do próprio protocolo de acesso ao meio.</p>
+
+            <h4>Restrições de Duty Cycle (Ciclo de Trabalho)</h4>
+            <p>O gargalo mais crítico, especialmente na Europa (banda 868 MHz), é o limite regulatório do Duty Cycle (DC). Como o LoRaWAN opera em bandas de rádio não licenciadas (como ISM), os reguladores impõem um limite na porcentagem de tempo que um dispositivo pode transmitir (Time on Air) em um determinado canal durante um período definido.</p>
+            <p>Na Europa, o limite comum é de 1% de Duty Cycle. Se um dispositivo transmitir por 1 segundo, ele deve permanecer em silêncio por 99 segundos. Esse limite aumenta drasticamente a latência e restringe a frequência de envio de mensagens por um único dispositivo. O DC é o principal fator que limita a capacidade total de mensagens que a rede pode suportar, mais do que o próprio hardware do gateway ou servidor.</p>
+        
+            <h4>Capacidade da Rede e Colisões (Capacidade de Escala)</h4>
+            <p>A capacidade de uma rede LoRaWAN é limitada pelo Duty Cycle e pela probabilidade de colisões de pacotes. O LoRaWAN usa um protocolo de acesso ao meio simples chamado ALOHA Puro, onde os dispositivos finais (Classe A) transmitem de forma assíncrona, sem ouvir o canal primeiro (Listen Before Talk - LBT).</p>
+            <ul>
+                <li><p><strong>Perda de Pacotes:</strong> Se dois pacotes chegarem ao gateway ao mesmo tempo no mesmo canal e com o mesmo Spreading Factor (SF), eles colidem e ambos são perdidos. Embora o gateway possa receber simultaneamente pacotes com diferentes SFs (propriedade de ortogonalidade de LoRa), a colisão do mesmo SF/canal é um problema.</p></li>
+                <li><p><strong>Escalabilidade:</strong> O número de dispositivos que um gateway pode efetivamente suportar é determinado pela frequência de envio (traffic density) e pela taxa de colisão aceitável, e não por um limite de hardware fixo. Uma alta densidade de dispositivos enviando mensagens frequentemente pode levar ao congestionamento do canal e à degradação significativa do desempenho, ou seja, à redução da Taxa de Entrega de Pacotes (PDR).</p></li>
+            </ul>
         </div>
     </main>
 </body>
