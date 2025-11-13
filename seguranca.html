@@ -26,10 +26,10 @@
     </header>
     <main>
         <div class="content-section">
-            <h2>Segurança no LoRaWAN™</h2>
+            <h2>5. Segurança no LoRaWAN™</h2>
             <p>O protocolo LoRaWAN garante uma segurança robusta para dispositivos IoT de baixo consumo através de uma arquitetura de duas camadas com criptografia AES-128, autenticação mútua e proteção contra ataques de repetição.</p>
             
-            <h3>Criptografia AES-128 de Duas Camadas</h3>
+            <h3>5.1 Criptografia AES-128 de Duas Camadas</h3>
             <p>O LoRaWAN emprega o Advanced Encryption Standard (AES) com uma chave simétrica de 128 bits como seu principal primitivo criptográfico. Este padrão é aplicado em uma arquitetura de segurança de duas camadas, que é fundamental para o design de segurança do LoRaWAN.</p>
 
             <div class="text-image-container">
@@ -42,19 +42,19 @@
                 </div>
             </div>
             
-            <h3>Autenticação Mútua e Derivação de Chave de Sessão</h3>
+            <h3>5.2 Autenticação Mútua e Derivação de Chave de Sessão</h3>
             <p>O LoRaWAN utiliza um processo robusto, tipicamente o procedimento de adesão Over-The-Air Activation (OTAA - Ativação pelo Ar), para estabelecer uma comunicação segura. Este processo envolve.</p>
             
             <p><strong>Autenticação Mútua:</strong> Tanto o dispositivo final quanto a rede (Join Server) verificam a autenticidade um do outro. O dispositivo prova que possui a Chave de Aplicação (AppKey) única de 128 bits, e a rede prova que pode gerar uma resposta válida. Isso evita que dispositivos não autorizados ou maliciosos se juntem à rede e protege dispositivos legítimos de se conectarem a redes falsas.</p>
             <p><strong>Derivação Dinâmica de Chave de Sessão:</strong> Após a autenticação mútua bem-sucedida, o dispositivo e o Join Server derivam dinamicamente as duas chaves de sessão exclusivas, a NwkSKey e a AppSKey, que são então usadas para toda a comunicação segura subsequente, aumentando a segurança em comparação com o uso de chaves estáticas.</p>
         
-            <h3>Contadores de Quadros (Proteção Contra Repetição)</h3>
+            <h3>5.3 Contadores de Quadros (Proteção Contra Repetição)</h3>
             <p>Para proteger contra ataques de repetição (replay attacks) (onde um invasor intercepta um pacote legítimo e o retransmite mais tarde), o LoRaWAN incorpora um Contador de Quadros (FCnt) em cada mensagem de dados.</p>
         
             <p><strong>Função:</strong> Existe um contador de quadros de uplink (subida) e downlink (descida) separado. O dispositivo final incrementa seu contador de uplink a cada transmissão, e o Servidor de Rede rastreia esse valor.</p>
             <p><strong>Proteção:</strong> Se o Servidor de Rede receber uma mensagem de uplink com um valor de contador de quadros igual ou inferior ao último contador válido que recebeu, a mensagem é descartada. Este mecanismo impede efetivamente que um invasor repita com sucesso mensagens antigas e válidas para manipular o sistema.</p>
         
-            <h3>Vulnerabilidades do LoRaWAN™</h3>
+            <h3>5.4 Vulnerabilidades do LoRaWAN™</h3>
 
             <div class="text-image-container image-left">
                 <div class="text-block">
@@ -73,4 +73,5 @@
         </div>
     </main>
 </body>
+
 </html>
