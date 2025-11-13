@@ -29,10 +29,10 @@
             <h2>3. O Protocolo LoRaWAN: Regras da Rede</h2>
             <p>O <strong>LoRaWAN</strong> (Long Range Wide Area Network) é o protocolo de comunicação em camada MAC responsável por organizar o tráfego de dados em redes que utilizam a modulação <em>LoRa</em>. Enquanto o LoRa corresponde ao nível físico (camada 1 do modelo OSI), garantindo o alcance e a robustez do sinal, o LoRaWAN opera na camada de enlace de dados (camada 2), estabelecendo as <strong>regras de acesso ao meio, segurança, endereçamento e eficiência energética</strong> que tornam a tecnologia adequada para redes IoT massivas.</p>
 
-            <h4>3.1 Função e Camada MAC</h4>
+            <h3>3.1 Função e Camada MAC</h3>
             <p>A principal função do LoRaWAN é <strong>gerenciar o uso do espectro de forma eficiente</strong>, garantindo conectividade de milhares de dispositivos em uma mesma região, sem coordenação complexa. O protocolo adota o esquema de acesso aleatório <em>Pure ALOHA</em>, complementado com mecanismos de confirmação (ACKs), balanceando simplicidade e economia de energia. O <strong>Network Server</strong> atua como controlador central, eliminando duplicatas recebidas por múltiplos gateways, ajustando taxas de transmissão e coordenando a política de acesso ao meio.</p>
 
-            <h4>3.2 Componentes da Arquitetura</h4>
+            <h3>3.2 Componentes da Arquitetura</h3>
             <p>A rede segue a topologia <em>estrela-de-estrelas</em>, formada por:</p>
             <ul>
                 <li><strong>Dispositivos Finais (<em>End-Devices</em>):</strong> Normalmente sensores e atuadores de baixo consumo. Executam tarefas simples e transmitem pequenos pacotes, podendo operar por anos com uma única bateria.</li>
@@ -42,10 +42,10 @@
                 <li><strong>Join Server (JS):</strong> Especializado na autenticação e na distribuição de chaves de segurança durante o processo de adesão (OTAA).</li>
             </ul>
 
-            <h4>3.3 Mecanismo de Acesso (MAC)</h4>
+            <h3>3.3 Mecanismo de Acesso (MAC)</h3>
             <p>O LoRaWAN adota o <strong>Pure ALOHA</strong>, em que os dispositivos transmitem sem coordenação prévia. Esse modelo, embora simples e eficiente em consumo, pode sofrer com <strong>colisões de pacotes</strong> em redes muito densas, impactando a escalabilidade. Para mitigar esse problema, o protocolo impõe restrições de <em>duty-cycle</em> (1% na Europa, por exemplo), além do uso de diferentes canais e fatores de espalhamento (SF), que permitem transmissões simultâneas sem interferência direta.</p>
 
-            <h4>3.4 Classes de Dispositivos</h4>
+            <h3>3.4 Classes de Dispositivos</h3>
             <p>O protocolo define três classes de operação, otimizando o trade-off entre consumo de energia e latência:</p>
             <ul>
                 <li><strong>Classe A (obrigatória):</strong> Extremamente eficiente em energia. Cada uplink abre duas janelas curtas de downlink. Ideal para sensores alimentados por bateria de longa duração.</li>
@@ -53,14 +53,14 @@
                 <li><strong>Classe C:</strong> Mantém a recepção aberta continuamente (exceto durante uplinks). Oferece a menor latência, mas com alto consumo de energia, adequado para dispositivos conectados à rede elétrica.</li>
             </ul>
 
-            <h4>3.5 Segurança e Ativação</h4>
+            <h3>3.5 Segurança e Ativação</h3>
             <p>O LoRaWAN implementa <strong>criptografia AES-128</strong> em dois níveis: segurança de rede (integridade e autenticação) e segurança de aplicação (confidencialidade dos dados). Existem dois modos de ativação:</p>
             <ul>
                 <li><strong>OTAA (Over-The-Air Activation):</strong> O método mais seguro. O dispositivo envia uma requisição ao servidor de adesão e recebe chaves dinâmicas de sessão (NwkSKey e AppSKey), garantindo maior resiliência contra ataques.</li>
                 <li><strong>ABP (Activation by Personalization):</strong> Chaves e endereço são configurados estaticamente no dispositivo. Simples, porém vulnerável a ataques de repetição e clonagem.</li>
             </ul>
 
-            <h4>3.6 Taxa de Dados Adaptativa (ADR)</h4>
+            <h3>3.6 Taxa de Dados Adaptativa (ADR)</h3>
             <p>O <strong>Adaptive Data Rate</strong> é um mecanismo central para otimizar o equilíbrio entre alcance, consumo de energia e capacidade da rede. O servidor de rede ajusta dinamicamente parâmetros como o <em>Spreading Factor (SF)</em> e a potência de transmissão (TP) de cada dispositivo. Dessa forma:</p>
             <ul>
                 <li>Dispositivos próximos ao gateway usam SF menores (maior taxa de dados, menor tempo no ar, menor consumo).</li>
@@ -68,7 +68,7 @@
             </ul>
             <p>Esse mecanismo permite aumentar significativamente a capacidade global da rede, reduzindo colisões e prolongando a vida útil das baterias.</p>
 
-            <h4>3.7 Limitações e Desafios</h4>
+            <h3>3.7 Limitações e Desafios</h3>
             <p>Apesar de suas vantagens, o LoRaWAN enfrenta desafios relevantes:</p>
             <ul>
                 <li><strong>Escalabilidade:</strong> O aumento do número de dispositivos eleva colisões e retransmissões, impactando o throughput.</li>
@@ -80,3 +80,4 @@
     </main>
 </body>
 </html>
+
