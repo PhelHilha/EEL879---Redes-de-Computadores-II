@@ -2,10 +2,44 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale-1.0">
     <title>LoRaWAN - Bibliografia</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <!-- Estilo específico para a lista de bibliografia -->
+    <style>
+        .bibliography-list {
+            list-style: none; /* Remove os marcadores de lista */
+            padding-left: 0;
+            max-width: 1100px;
+            margin: 2rem auto 0 auto;
+        }
+        .bibliography-list li {
+            background-color: #3a3a3a; /* Um "card" de fundo para cada item */
+            padding: 20px 25px;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            line-height: 1.7; /* Melhora a legibilidade */
+        }
+        .bibliography-list li strong {
+            font-size: 1.15rem; /* Título da referência em destaque */
+            color: #ffffff;
+            display: block; /* Faz o título ocupar sua própria linha */
+            margin-bottom: 5px;
+        }
+        .bibliography-list li em {
+            color: #ccc; /* "Objetivo:" em itálico e cinza claro */
+        }
+        .bibliography-list li a {
+            color: #00aaff; /* Cor do link igual ao tema do site */
+            text-decoration: none;
+            word-break: break-all; /* Quebra URLs longas para não estourar o layout */
+        }
+        .bibliography-list li a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -27,7 +61,67 @@
     <main>
         <div class="content-section">
             <h2>7. Referências Bibliográficas</h2>
-            <p>Uma página dedicada para listar todas as fontes utilizadas na pesquisa.</p>
+            
+            <!-- Lista de Referências -->
+            <ul class="bibliography-list">
+
+                <!-- Seção 1 -->
+                <h3>1. Fontes Fundamentais e Oficiais</h3>
+                <li>
+                    <strong>LoRa Alliance®, "LoRaWAN® Specification" e outros documentos.</strong><br>
+                    <em>Objetivo:</em> Documentos oficiais que definem o protocolo LoRaWAN.<br>
+                    <em>Link:</em> LoRa Alliance: LoRaWAN® Specification v1.1
+                </li>
+
+                <!-- Seção 2 -->
+                <h3>2. Artigos de Visão Geral</h3>
+                <li>
+                    <strong>A Survey on LoRaWAN Architecture, Protocol and Technologies</strong><br>
+                    <em>Objetivo:</em> Um dos artigos de revisão mais citados e completos sobre o tema.<br>
+                    <em>Link:</em> <a href="https://doi.org/10.3390/fi11100216" target="_blank">https://doi.org/10.3390/fi11100216</a>
+                </li>
+                <li>
+                    <strong>LoRaWAN communication: A comprehensive survey</strong><br>
+                    <em>Objetivo:</em> Uma pesquisa mais recente que atualiza o estado da arte, cobrindo tópicos avançados.<br>
+                    <em>Link:</em> <a href="https://doi.org/10.3390/telecom3020018" target="_blank">https://doi.org/10.3390/telecom3020018</a>
+                </li>
+
+                <!-- Seção 3 -->
+                <h3>3. Análise de Desempenho e Escalabilidade da Rede</h3>
+                 <li>
+                    <strong>Adelantado, F., et al. "Understanding the Limits of LoRaWAN", IEEE Communications Magazine, 2017.</strong><br>
+                    <em>Objetivo:</em> Artigo seminal que analisa os gargalos de escalabilidade do LoRaWAN.<br>
+                    <em>Link:</em> <a href="https://doi.org/10.1109/MCOM.2017.1600613" target="_blank">https://doi.org/10.1109/MCOM.2017.1600613</a>
+                </li>
+                <li>
+                    <strong>Bankov, D.,et al. "On the Limits of LoRaWAN Channel Access", IEEE International Conference on Engineering and Telecommunication (EnT), 2016.</strong><br>
+                    <em>Objetivo:</em> Foca nos mecanismos de acesso ao meio e nas restrições de duty-cycle.<br>
+                    <em>Link:</em> On the Limits of LoRaWAN Channel Access | IEEE Conference Publication
+                </li>
+
+                <!-- Seção 4 -->
+                <h3>4. Análise de Segurança</h3>
+                <li>
+                    <strong>Eldefrawy, M., et al., Formal Security Analysis of LoRaWAN, ACM WiSec, 2019.</strong><br>
+                    <em>Objetivo:</em> Análise formal do protocolo de segurança LoRaWAN, discutindo vulnerabilidades e garantias.<br>
+                    <em>Link:</em> <a href="https://doi.org/10.1016/j.comnet.2018.11.017" target="_blank">https://doi.org/10.1016/j.comnet.2018.11.017</a>
+                </li>
+                <li>
+                    <strong>Moraes, D. R., et al, A Systematic Review of Security in the LoRaWAN Network Protocol, arXiv, 2021.</strong><br>
+                    <em>Objetivo:</em> Revisão sistemática sobre vulnerabilidades em LoRaWAN (versões 1.0 e 1.1) e contramedidas.<br>
+                    <em>Link:</em> [2105.00384] A Systematic Review of Security in the LoRaWAN Network Protocol
+                </li>
+
+                <!-- Seção 5 -->
+                <h3>5. Camada Física (LoRa) e Coexistência</h3>
+                <li>
+                    <strong>Semtech Corporation, "AN1200.86 LoRa and LoRaWAN®".</strong><br>
+                    <em>Objetivo:</em> Documento técnico oficial sobre a modulação LoRa e LoRaWAN.<br>
+                    <em>Link:</em> LoRa® and LoRaWAN®
+                </li>
+
+            </ul>
+
         </div>
     </main>
 </body>
