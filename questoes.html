@@ -27,16 +27,32 @@
     <main>
         <div class="content-section">
             <h2>Questões e Respostas</h2>
-            Temporárias, ainda serão modificadas
-            <button class="faq-question">Por que o método de ativação OTAA é considerado mais seguro que o ABP?</button>
+            
+            <button class="faq-question">Como o aumento do Spreading Factor (SF) influencia o alcance e a taxa de dados?</button>
             <div class="faq-answer">
-                <p>OTAA é mais seguro porque as chaves de sessão são geradas dinamicamente a cada vez que o dispositivo se junta à rede. No ABP, as chaves são pré-programadas e fixas, tornando-o mais vulnerável.</p>
+                <p>Um SF maior aumenta o ganho de processamento, o que amplia significativamente o alcance e a imunidade a ruídos. No entanto, isso tem um custo: reduz a taxa de dados e aumenta o tempo de transmissão (Time on Air), o que consome mais bateria.</p>
+            </div>
+
+            <button class="faq-question">Qual a principal diferença de segurança entre os modos de ativação OTAA e ABP?</button>
+            <div class="faq-answer">
+                <p>No modo <strong>OTAA (Over-The-Air Activation)</strong>, as chaves de sessão são geradas dinamicamente e de forma segura a cada vez que o dispositivo entra na rede. Já no modo <strong>ABP (Activation by Personalization)</strong>, as chaves são estáticas e pré-configuradas, tornando o dispositivo vulnerável a ataques de clonagem e repetição, pois as chaves nunca mudam.</p>
             </div>
 
             <button class="faq-question">O que é Adaptive Data Rate (ADR) e por que é importante?</button>
             <div class="faq-answer">
-                <p>ADR é um mecanismo onde o Network Server otimiza a taxa de dados e a potência de transmissão de cada dispositivo. Isso é crucial para economizar a bateria e aumentar a capacidade total da rede.</p>
+                <p>ADR é um mecanismo onde o Network Server otimiza a taxa de dados e a potência de transmissão de cada dispositivo. Isso é crucial para economizar a bateria e aumentar a capacidade total da rede, garantindo que dispositivos próximos ao gateway transmitam mais rápido e com menos potência.</p>
             </div>
+
+            <button class="faq-question">O que é a restrição de Duty Cycle e como ela impacta a rede?</button>
+            <div class="faq-answer">
+                <p>O Duty Cycle é um limite regulatório (comum na Europa) sobre a porcentagem de tempo que um dispositivo pode ocupar um canal de rádio (ex: 1%). Isso restringe a frequência com que um dispositivo pode enviar mensagens e aumenta a latência, sendo um dos principais gargalos que limitam a capacidade de escala da rede.</p>
+            </div>
+
+            <button class="faq-question">Qual a função da NwkSKey e da AppSKey na arquitetura de segurança?</button>
+            <div class="faq-answer">
+                <p>O LoRaWAN usa duas camadas de segurança: a <strong>NwkSKey (Chave de Sessão de Rede)</strong> garante a integridade e autenticação do pacote entre o dispositivo e o Network Server. A <strong>AppSKey (Chave de Sessão de Aplicação)</strong> realiza a criptografia ponta a ponta do payload, garantindo que apenas o dispositivo e o Application Server possam ler os dados reais.</p>
+            </div>
+
         </div>
     </main>
 
@@ -55,5 +71,4 @@
         });
     </script>
 </body>
-
 </html>
