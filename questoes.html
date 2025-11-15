@@ -48,9 +48,9 @@
                 <p>O Duty Cycle é um limite regulatório (comum na Europa) sobre a porcentagem de tempo que um dispositivo pode ocupar um canal de rádio (ex: 1%). Isso restringe a frequência com que um dispositivo pode enviar mensagens e aumenta a latência, sendo um dos principais gargalos que limitam a capacidade de escala da rede.</p>
             </div>
 
-            <button class="faq-question">Qual a função da NwkSKey e da AppSKey na arquitetura de segurança?</button>
+            <button class="faq-question">Qual protocolo de acesso aleatório o LoRaWAN utiliza em sua camada MAC e qual o principal benefício dessa escolha?</button>
             <div class="faq-answer">
-                <p>O LoRaWAN usa duas camadas de segurança: a <strong>NwkSKey (Chave de Sessão de Rede)</strong> garante a integridade e autenticação do pacote entre o dispositivo e o Network Server. A <strong>AppSKey (Chave de Sessão de Aplicação)</strong> realiza a criptografia ponta a ponta do payload, garantindo que apenas o dispositivo e o Application Server possam ler os dados reais.</p>
+                <p>O LoRaWAN adota o esquema de acesso aleatório Pure ALOHA. O principal benefício dessa escolha é que ela balanceia simplicidade e economia de energia, permitindo que os dispositivos transmitam sem coordenação prévia complexa.</p>
             </div>
 
         </div>
@@ -72,3 +72,4 @@
     </script>
 </body>
 </html>
+
