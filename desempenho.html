@@ -57,6 +57,17 @@
                 <li><p><strong>Perda de Pacotes:</strong> Se dois pacotes chegarem ao gateway ao mesmo tempo no mesmo canal e com o mesmo Spreading Factor (SF), eles colidem e ambos são perdidos. Embora o gateway possa receber simultaneamente pacotes com diferentes SFs (propriedade de ortogonalidade de LoRa), a colisão do mesmo SF/canal é um problema.</p></li>
                 <li><p><strong>Escalabilidade:</strong> O número de dispositivos que um gateway pode efetivamente suportar é determinado pela frequência de envio (traffic density) e pela taxa de colisão aceitável, e não por um limite de hardware fixo. Uma alta densidade de dispositivos enviando mensagens frequentemente pode levar ao congestionamento do canal e à degradação significativa do desempenho, ou seja, à redução da Taxa de Entrega de Pacotes (PDR).</p></li>
             </ul>
+
+            <h3>4.3 Limitações e Desafios</h3>
+            
+            <p>O desempenho do LoRaWAN é fortemente influenciado por restrições regulatórias, pela modulação LoRa e pelo mecanismo simples de acesso ao meio.</p>
+            <ul>
+            <li><strong>Tempo no Ar elevado:</strong> Spreading Factors altos aumentam significativamente o Time on Air, reduzindo a capacidade do canal.</li>
+            <li><strong>Duty Cycle:</strong> Limites regulatórios (ex.: 1% na Europa) impedem transmissões frequentes e elevam a latência.</li>
+            <li><strong>Colisões:</strong> O uso de Aloha puro causa colisões em redes densas, especialmente quando dispositivos utilizam o mesmo SF.</li>
+            <li><strong>Interferência:</strong> A operação em bandas ISM expõe a rede a ruídos de outras tecnologias e redes paralelas, degradando o desempenho.</li>
+            <li><strong>ADR em ambientes dinâmicos:</strong> A taxa de dados adaptativa pode ser imprecisa em cenários com mobilidade ou variação rápida do canal.</li>
+            </ul>
         </div>
     </main>
 </body>

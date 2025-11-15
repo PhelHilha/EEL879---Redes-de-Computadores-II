@@ -29,9 +29,18 @@
             <h2>3. O Protocolo LoRaWAN: Regras da Rede</h2>
             <p>O <strong>LoRaWAN</strong> (Long Range Wide Area Network) é o protocolo de comunicação em camada MAC responsável por organizar o tráfego de dados em redes que utilizam a modulação <em>LoRa</em>. Enquanto o LoRa corresponde ao nível físico (camada 1 do modelo OSI), garantindo o alcance e a robustez do sinal, o LoRaWAN opera na camada de enlace de dados (camada 2), estabelecendo as <strong>regras de acesso ao meio, segurança, endereçamento e eficiência energética</strong> que tornam a tecnologia adequada para redes IoT massivas.</p>
 
+            <div class="text-image-container">
+                <div class="text-block">
             <h3>3.1 Função e Camada MAC</h3>
             <p>A principal função do LoRaWAN é <strong>gerenciar o uso do espectro de forma eficiente</strong>, garantindo conectividade de milhares de dispositivos em uma mesma região, sem coordenação complexa. O protocolo adota o esquema de acesso aleatório <em>Pure ALOHA</em>, complementado com mecanismos de confirmação (ACKs), balanceando simplicidade e economia de energia. O <strong>Network Server</strong> atua como controlador central, eliminando duplicatas recebidas por múltiplos gateways, ajustando taxas de transmissão e coordenando a política de acesso ao meio.</p>
-
+            
+           </div>
+                <div class="image-block">
+                    <img src="images/Pure-ALOHA.webp" alt="Pure ALOHA">
+                </div>
+            </div>
+            <div class="text-image-container">
+                <div class="text-block">
             <h3>3.2 Componentes da Arquitetura</h3>
             <p>A rede segue a topologia <em>estrela-de-estrelas</em>, formada por:</p>
             <ul>
@@ -41,10 +50,42 @@
                 <li><strong>Servidor de Aplicação (AS):</strong> Onde os dados brutos são processados, descriptografados e entregues às aplicações finais, como sistemas de monitoramento ou automação.</li>
                 <li><strong>Join Server (JS):</strong> Especializado na autenticação e na distribuição de chaves de segurança durante o processo de adesão (OTAA).</li>
             </ul>
+            </div>
+                <div class="image-block">
+                    <img src="images/lorawan_network.png" alt="Componentes da Arquitetura do LoRaWAN">
+                </div>
+            </div>
 
+            <div class="text-image-container">
+                <div class="text-block">
             <h3>3.3 Mecanismo de Acesso (MAC)</h3>
-            <p>O LoRaWAN adota o <strong>Pure ALOHA</strong>, em que os dispositivos transmitem sem coordenação prévia. Esse modelo, embora simples e eficiente em consumo, pode sofrer com <strong>colisões de pacotes</strong> em redes muito densas, impactando a escalabilidade. Para mitigar esse problema, o protocolo impõe restrições de <em>duty-cycle</em> (1% na Europa, por exemplo), além do uso de diferentes canais e fatores de espalhamento (SF), que permitem transmissões simultâneas sem interferência direta.</p>
+            <p>O LoRaWAN utiliza um mecanismo de acesso ao meio baseado em <strong>Pure ALOHA</strong>, um modelo simples no qual os dispositivos transmitem sempre que precisam, sem escuta prévia do canal e sem qualquer forma de agendamento centralizado. Esse design reduz drasticamente o consumo de energia dos dispositivos finais, pois eles não precisam manter o rádio ligado para sincronização ou coordenação.</p>
 
+            <p>No Pure ALOHA, uma transmissão é bem-sucedida apenas se nenhum outro dispositivo transmitir dentro de uma janela de vulnerabilidade equivalente a aproximadamente <strong>2 × Time on Air</strong> do pacote. Quando dois pacotes se sobrepõem parcialmente no tempo, na mesma frequência e usando o mesmo Spreading Factor (SF), ocorre uma colisão e ambos são perdidos. Por isso, a taxa de colisão cresce rapidamente conforme o número de dispositivos aumenta.</p>
+
+            <p>Para compensar essa limitação do acesso aleatório, o LoRaWAN combina três estratégias fundamentais:</p>
+            <ul>
+                <li><strong>Múltiplos canais de rádio</strong>: gateways geralmente suportam 8 ou mais canais simultâneos, distribuindo o tráfego e reduzindo a probabilidade de colisão.</li>
+
+            <li><strong>Uso de Spreading Factors ortogonais</strong>: dispositivos podem transmitir simultaneamente no mesmo canal utilizando SFs distintos (SF7–SF12). Esses sinais são tratados como praticamente independentes, permitindo que o gateway receba várias transmissões paralelas. Essa ortogonalidade é um dos pilares da escalabilidade do LoRaWAN.</li>
+
+             <li><strong>Duty-cycle regulatório</strong>: em regiões como Europa (ETSI 868 MHz), dispositivos e gateways são limitados a transmitir apenas <strong>1% do tempo em cada canal</strong>. Embora o objetivo seja evitar congestão do espectro ISM, na prática esse limite reduz a quantidade de mensagens que cada dispositivo pode enviar e impõe maior espaçamento entre transmissões, o que, de forma indireta, reduz a chance de colisões.</li>
+            </ul>
+
+            <p>Do ponto de vista do MAC, o LoRaWAN implementa ainda:</p>
+            <ul>
+             <li><strong>Deduplicação no Network Server</strong>: como um uplink pode ser recebido por múltiplos gateways, o servidor de rede detecta duplicatas e elimina redundâncias, aumentando confiabilidade sem penalizar o canal.</li>
+             <li><strong>Confirmação opcional (ACK)</strong>: dispositivos podem solicitar confirmação, mas isso implica downlinks adicionais, que são extremamente limitados devido ao duty-cycle dos gateways, tornando ACKs um recurso que deve ser usado com cautela.</li>
+            </ul>
+
+            <p>No conjunto, o MAC do LoRaWAN é deliberadamente simples para maximizar a eficiência energética, mas isso traz desafios naturais de congestionamento e escalabilidade. Por esse motivo, mecanismos como ADR (para reduzir o tempo no ar), múltiplos canais e ortogonalidade dos SFs são essenciais para manter a rede funcional mesmo com milhares de dispositivos.</p>
+            </div>
+            <div class="image-block">
+                    <img src="images/duty_cycle.png" alt="Duty Cycle no Lorawan">
+                </div>
+            </div>
+            <div class="text-image-container">
+                <div class="text-block">
             <h3>3.4 Classes de Dispositivos</h3>
             <p>O protocolo define três classes de operação, otimizando o trade-off entre consumo de energia e latência:</p>
             <ul>
@@ -52,7 +93,11 @@
                 <li><strong>Classe B:</strong> Introduz janelas adicionais de recepção em horários sincronizados por <em>beacons</em>, permitindo maior previsibilidade na comunicação. É útil em cenários que exigem comandos periódicos.</li>
                 <li><strong>Classe C:</strong> Mantém a recepção aberta continuamente (exceto durante uplinks). Oferece a menor latência, mas com alto consumo de energia, adequado para dispositivos conectados à rede elétrica.</li>
             </ul>
-
+            </div>
+                <div class="image-block">
+                    <img src="images/classes.png" alt="Classes do Lorawan">
+                </div>
+            </div>
             <h3>3.5 Segurança e Ativação</h3>
             <p>O LoRaWAN implementa <strong>criptografia AES-128</strong> em dois níveis: segurança de rede (integridade e autenticação) e segurança de aplicação (confidencialidade dos dados). Existem dois modos de ativação:</p>
             <ul>

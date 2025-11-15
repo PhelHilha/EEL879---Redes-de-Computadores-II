@@ -70,6 +70,16 @@
             <p>Além disso, existe uma vulnerabilidade no <strong>Método de Ativação ABP e Gerenciamento de Chaves</strong>, pois o LoRaWAN oferece dois métodos de ativação: OTAA (mais seguro, gera chaves de sessão novas e dinâmicas) e ABP (menos seguro, usa chaves de sessão estáticas). Quando um dispositivo utiliza o ABP, ele possui as mesmas chaves de sessão por toda sua vida útil.</p>
             <p>Se um atacante conseguir extrair ou comprometer essas chaves estáticas de um único dispositivo (ABP), ele poderá descriptografar todas as mensagens futuras desse dispositivo e falsificar mensagens (spoofing), se passando pelo dispositivo legítimo.</p>
             <p>O ABP também é mais suscetível a ataques de repetição (replay attacks) se os contadores de quadros (FCnt) não forem manipulados ou verificados corretamente, pois o atacante pode simplesmente re-enviar dados antigos com as chaves comprometidas.</p>
+        
+            <h3>5.5 Limitações e Desafios</h3>
+            <p>Embora o LoRaWAN adote criptografia robusta, alguns aspectos de sua arquitetura e operação introduzem vulnerabilidades.</p>
+            <ul>
+            <li><strong>Jamming:</strong> A operação em bandas não licenciadas facilita interferências intencionais, podendo causar DoS.</li>
+            <li><strong>ABP:</strong> A ativação por personalização usa chaves estáticas, tornando o dispositivo vulnerável caso sejam comprometidas.</li>
+            <li><strong>Exposição física:</strong> Dispositivos instalados em ambientes externos podem ter chaves extraídas por acesso físico.</li>
+            <li><strong>Gerenciamento de chaves:</strong> Implementações sem atualização periódica ou sem Join Server seguro ampliam riscos.</li>
+            <li><strong>Camada física sem proteção:</strong> A camada LoRa não possui autenticação, permitindo captura de pacotes e análise de tráfego.</li>
+            </ul>
         </div>
     </main>
 </body>
