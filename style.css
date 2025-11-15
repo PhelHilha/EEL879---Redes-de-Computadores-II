@@ -231,3 +231,25 @@ nav ul li a:hover {
         flex-direction: column;
     }
 }
+/* --- ESTILO PARA IMAGEM GRANDE E HORIZONTAL --- */
+
+.image-full-width {
+    width: 100%; /* Ocupa 100% da largura do .content-section */
+    max-width: 1100px; /* Alinha com a largura máxima do texto */
+    margin: 2rem auto; /* Centraliza o bloco e adiciona espaço */
+}
+
+.image-full-width img {
+    width: 100%; /* Faz a imagem preencher o container */
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.image-full-width figcaption {
+    margin-top: 8px;
+    font-size: 0.85rem;
+    color: #b0b0b0;
+    text-align: center;
+    font-style: italic;
+    line-height: 1.4;
+}
